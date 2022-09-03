@@ -1,10 +1,9 @@
 const path = require('path');
 const axios = require('axios');
-const cors = require('cors');
 const express = require('express');
 const app = express();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5002;
 
 const buildPath = path.join(__dirname, '..', 'build');
 app.use(express.static(buildPath));
@@ -21,7 +20,7 @@ app.get('/jobs', async (req, res) => {
       page = parseInt(page);
       page = isNaN(page) ? '' : `&page=${page}`;
     }
-    const query = `https://jobs.github.com/positions.json?description=${description}&location=${location}${full_time}${page}`;
+    const query = `https://api.sampleapis.com/futurama/characters`;
     const result = await axios.get(query);
     res.send(result.data);
   } catch (error) {

@@ -12,6 +12,10 @@ const JobItem = (props) => {
 
   const {
     id,
+    name,
+    images,
+    species,
+    occupation,
     type,
     created_at,
     company,
@@ -25,20 +29,15 @@ const JobItem = (props) => {
     <div className="job-item" index={index + 1} onClick={() => onItemClick(id)}>
       <div className="company-logo" ref={imageRef}>
         {isVisible && (
-          <Image src={company_logo} alt={company} width="100" height="100" />
+          <Image src={images.main} alt={company} width="100" height="100" />
         )}
       </div>
       <div className="job-info">
-        <div className="job-title">{title}</div>
+        <div className="job-title">{name.first} {name.last}</div>
         <div className="job-location">
-          {location} | {type}
+          {species} | {occupation}
         </div>
         <div className="company-name">{company}</div>
-      </div>
-      <div className="post-info">
-        <div className="post-time">
-          Posted {moment(new Date(created_at)).fromNow()}
-        </div>
       </div>
     </div>
   );
